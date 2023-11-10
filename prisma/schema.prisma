@@ -1,0 +1,33 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String  @id @default(auto()) @map("_id") @db.ObjectId
+  discordId     String
+  bot           Boolean
+  system        Boolean
+  bio           String
+  pronouns      String
+  username      String
+  globalName    String
+  discriminator String
+  avatar        String
+  verified      Boolean
+  nitroType     String
+  phoneNumber   String
+  emailAddress  String
+  Guild         Guild   @relation(fields: [discordId], references: [guildId])
+}
+
+model Guild {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  guildId String @db.ObjectId
+  name    String
+  members User[]
+}
