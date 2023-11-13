@@ -18,7 +18,7 @@ export default function Config() {
 
 	async function sendNewConfig() {
 		const req = await axios
-			.put("http://localhost:3000/server", { ...config })
+			.put("https://self-api-ozjt.onrender.com/server", { ...config })
 			.then(toast.success("Nova configuração salva"))
 			.catch(err => toast.error("Ocorreu um erro"));
 
@@ -26,7 +26,7 @@ export default function Config() {
 	}
 
 	async function getConfig() {
-		const config = await axios.get("http://localhost:3000/server");
+		const config = await axios.get("https://self-api-ozjt.onrender.com/server");
 		console.log(config.data.message);
 		setConfig(config.data);
 	}
