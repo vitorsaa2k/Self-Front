@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export function BotInfo() {
 	const [count, setCount] = useState(0);
 	async function getMembersCount() {
-		const req = await axios.get("http://localhost:3000/users");
+		const req = await axios.get("https://self-api-ozjt.onrender.com/users");
 		const total = req?.data.length || 0;
 		setCount(total);
 	}
