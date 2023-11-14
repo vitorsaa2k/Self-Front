@@ -1,6 +1,4 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
-import { Button } from "@/components/button";
 import { getUsersCount } from "@/actions/api/user";
 import { useEffect, useState } from "react";
 import { BotInfo } from "@/components/botInfo";
@@ -20,9 +18,7 @@ export default function Home() {
 	}
 
 	return (
-		<main
-			className={`flex flex-col w-screen justify-center items-center bg-[#f2eeed]`}
-		>
+		<main className={`flex flex-col justify-center items-center`}>
 			<div className="mt-4">
 				<BotInfo />
 				<Table />

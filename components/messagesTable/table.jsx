@@ -10,7 +10,7 @@ export function Table() {
 	}, []);
 
 	async function getMessages() {
-		const req = await axios.get("http://localhost:3000/users");
+		const req = await axios.get("https://self-api-ozjt.onrender.com/users");
 		setMessages(req.data);
 	}
 	return (

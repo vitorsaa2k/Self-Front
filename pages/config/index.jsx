@@ -10,6 +10,7 @@ export default function Config() {
 		secondDelay: 0,
 		thirdDelay: 0,
 		message: "",
+		token: "",
 	});
 
 	useEffect(() => {
@@ -18,7 +19,7 @@ export default function Config() {
 
 	async function sendNewConfig() {
 		const req = await axios
-			.put("http://localhost:3000/server", { ...config })
+			.put("https://self-api-ozjt.onrender.com/server", { ...config })
 			.then(toast.success("Nova configuração salva"))
 			.catch(err => toast.error("Ocorreu um erro"));
 
@@ -26,13 +27,28 @@ export default function Config() {
 	}
 
 	async function getConfig() {
-		const config = await axios.get("http://localhost:3000/server");
+		const config = await axios.get("https://self-api-ozjt.onrender.com/server");
 		console.log(config.data.message);
 		setConfig(config.data);
 	}
 	return (
-		<div className="flex bg-[#f2eeed] justify-center items-center h-screen w-screen">
-			<div className=" bg-white shadow p-4 rounded  w-[1000px] gap-2 flex flex-col">
+		<div className="flex justify-center items-center">
+			<div className=" bg-white shadow p-4 rounded mt-12 w-[1000px] gap-2 flex flex-col">
+				<label className="flex flex-col m-2" htmlFor="token">
+					Discord Token
+					<input
+						name="token"
+						value={config.token}
+						onChange={e => {
+							setConfig(prevConfig => ({
+								...prevConfig,
+								token: e.target.value,
+							}));
+						}}
+						className="border-2 max-w-[300px] py-2 p-1 border-l-black border-gray-400/40 rounded"
+					></input>
+				</label>
+
 				<label className="flex flex-col m-2" htmlFor="firstDelay">
 					Delay de cada mensagem (segundos)
 					<input
