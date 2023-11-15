@@ -20,7 +20,7 @@ export function AuthContainer() {
 
 	async function login(e) {
 		e.preventDefault();
-		const req = await axios.post("http://localhost:3001/login", {
+		const req = await axios.post("https://self-api-ozjt.onrender.com/login", {
 			password: password,
 		});
 		console.log(req.data);
