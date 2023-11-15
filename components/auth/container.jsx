@@ -8,7 +8,6 @@ export function AuthContainer() {
 	const [password, setPassword] = useState("");
 
 	const { isLogged, setIsLogged } = useContext(LoginContext);
-	console.log(password);
 	const inputElement = useRef();
 
 	useEffect(() => {
@@ -23,7 +22,6 @@ export function AuthContainer() {
 		const req = await axios.post("https://self-api-ozjt.onrender.com/login", {
 			password: password,
 		});
-		console.log(req.data);
 		if (!req.data.error) {
 			setIsLogged(true);
 			toast.success("Login efetuado");
@@ -51,7 +49,9 @@ export function AuthContainer() {
 						className="border-2 w-[400px] py-2 p-1 border-l-black border-gray-400/40 rounded"
 					></input>
 				</label>
-				<Button type="button">Login</Button>
+				<Button onClick={login} type="button">
+					Login
+				</Button>
 			</form>
 		</div>
 	);
